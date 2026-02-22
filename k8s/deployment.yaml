@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ads-ingestion
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ads-ingestion
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ads-ingestion
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: ingestion
+          image: ads-ingestion-service:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 8080
