@@ -22,10 +22,6 @@ docker build -t ads-ingestion-service .
 docker run -p 8080:8080 ads-ingestion-service
 
 
-# Ads Metrics Ingestion Service
-
-High-availability ingestion service designed for real-time ad metrics.
-
 ## Branch Strategy
 
 - `main` → Production
