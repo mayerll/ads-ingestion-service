@@ -21,3 +21,31 @@ uvicorn app.main:app --host 0.0.0.0 --port 8080
 docker build -t ads-ingestion-service .
 docker run -p 8080:8080 ads-ingestion-service
 
+
+# Ads Metrics Ingestion Service
+
+High-availability ingestion service designed for real-time ad metrics.
+
+## Branch Strategy
+
+- `main` → Production
+- `develop` → Development integration
+- `qa` → QA environment
+- `staging` → Staging environment
+- `feature/*` → Feature development
+- `hotfix/*` → Production hotfix
+
+## Features
+
+- Async queue buffering with backpressure
+- Batch processing
+- Structured logging
+- Prometheus metrics
+- Kubernetes ready (Deployment + HPA + PDB)
+- CI/CD with Jenkins
+
+## Run Locally
+
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8080
