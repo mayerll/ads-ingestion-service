@@ -4,7 +4,7 @@ High-availability ingestion service designed for real-time ad metrics.
 
 ## Architecture
 
-<img width="1379" height="792" alt="image" src="https://github.com/user-attachments/assets/eb636277-9378-4556-9d9c-eca499e04e41" />
+<img width="1357" height="796" alt="image" src="https://github.com/user-attachments/assets/2e87b654-0aa2-4889-a96d-1e58bb67dd56" />
 
 ## Features
 
