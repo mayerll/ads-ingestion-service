@@ -2,6 +2,10 @@
 
 High-availability ingestion service designed for real-time ad metrics.
 
+## Architecture
+
+<img width="1379" height="792" alt="image" src="https://github.com/user-attachments/assets/eb636277-9378-4556-9d9c-eca499e04e41" />
+
 ## Features
 
 - Async queue buffering
