@@ -24,7 +24,7 @@ docker run -p 8080:8080 ads-ingestion-service
 
 ## Branch Strategy
 
-- `main` → Production
+- `main or prod` → Production
 - `develop` → Development integration
 - `qa` → QA environment
 - `staging` → Staging environment
