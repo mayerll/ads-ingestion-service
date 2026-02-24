@@ -35,6 +35,12 @@ docker run -p 8080:8080 ads-ingestion-service
 - `feature/*` → Feature development
 - `hotfix/*` → Production hotfix
 
+  Branch Driven Deployment Solution:
+<img width="1862" height="1202" alt="image" src="https://github.com/user-attachments/assets/d89cf368-feb5-4979-b7a4-44a03e2ae7d1" />
+<img width="1862" height="1202" alt="image" src="https://github.com/user-attachments/assets/d89cf368-feb5-4979-b7a4-44a03e2ae7d1" />
+
+
+
 ## Features
 
 - Async queue buffering with backpressure
