@@ -48,31 +48,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') { // helm is good tools to manage the lifecycles of service
+        stage('Deploy') { // helm is good tools to manage the lifecycles of services
             steps {
                 script {
-                    if (env.BRANCH_NAME.startsWith('feature/')) {
-                        echo "Feature branch - only build/test, no deployment"
-                    } 
-                    else if (env.BRANCH_NAME == 'develop') {
-                        echo "Deploy to staging dry-run"
+                        echo "Deploy to target env"
                         sh "kubectl apply -f k8s/ "
+                        // sh """
+                        //        helm upgrade --install ads-ingestion \
+                        //          ./helm-chart \
+                        //          --set image.tag=${IMAGE_TAG} \
+                        // """
                     } 
-                    else if (env.BRANCH_NAME == 'qa') {
-                        echo "Deploy to QA environment"
-                        sh "kubectl apply  -f k8s/ "
-                    } 
-                    else if (env.BRANCH_NAME == 'staging') {
-                        echo "Deploy to staging environment"
-                        sh "kubectl apply -f k8s/"
-                    } 
-                    else if (env.BRANCH_NAME == 'main') {
-                        echo "Deploy to production"
-                        sh "kubectl apply -f k8s/"
-                    } 
-                    else {
-                        echo "Branch ${env.BRANCH_NAME} does not trigger deployment"
-                    }
                 }
             }
         }
