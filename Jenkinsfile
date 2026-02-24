@@ -4,9 +4,6 @@ pipeline {
 
     environment {
         IMAGE_NAME = "ads-ingestion-service"
-        QA_NAMESPACE = "qa"
-        STAGING_NAMESPACE = "staging"
-        PROD_NAMESPACE = "production"
     }
 
     stages {
@@ -48,7 +45,6 @@ pipeline {
         stage('Push Docker') {
             steps {
                 sh "docker push docker.io/mayerll/${IMAGE_NAME}:${IMAGE_TAG}"
-                echo "Docker push logic here for ${IMAGE_TAG}"
             }
         }
 
@@ -60,19 +56,19 @@ pipeline {
                     } 
                     else if (env.BRANCH_NAME == 'develop') {
                         echo "Deploy to staging dry-run"
-                        sh "kubectl apply -n ${STAGING_NAMESPACE} -f k8s/ --dry-run=client"
+                        sh "kubectl apply -f k8s/ "
                     } 
                     else if (env.BRANCH_NAME == 'qa') {
                         echo "Deploy to QA environment"
-                        sh "kubectl apply -n ${QA_NAMESPACE} -f k8s/ --dry-run=client"
+                        sh "kubectl apply  -f k8s/ "
                     } 
                     else if (env.BRANCH_NAME == 'staging') {
                         echo "Deploy to staging environment"
-                        sh "kubectl apply -n ${STAGING_NAMESPACE} -f k8s/"
+                        sh "kubectl apply -f k8s/"
                     } 
                     else if (env.BRANCH_NAME == 'main') {
                         echo "Deploy to production"
-                        sh "kubectl apply -n ${PROD_NAMESPACE} -f k8s/"
+                        sh "kubectl apply -f k8s/"
                     } 
                     else {
                         echo "Branch ${env.BRANCH_NAME} does not trigger deployment"
