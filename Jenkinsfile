@@ -133,12 +133,12 @@ pipeline {
                             kubectl rollout status deployment/${IMAGE_NAME} \
                             -n ${namespace} --timeout=180s
                             """
-                            # Or use helm/chart to manage the lifecycle of service
-                            # helm upgrade --install ads-ingestion ./helm-chart \
-                            #      --namespace ${namespace} \
-                            #      --create-namespace \
-                            #      --set image.repository=docker.io/mayerll/${IMAGE_NAME} \
-                            #      --set image.tag=${IMAGE_TAG}
+                            // Or use helm/chart to manage the lifecycle of service
+                            // helm upgrade --install ads-ingestion ./helm-chart \
+                            //      --namespace ${namespace} \
+                            //      --create-namespace \
+                            //      --set image.repository=docker.io/mayerll/${IMAGE_NAME} \
+                            //      --set image.tag=${IMAGE_TAG}
 
                             echo "Deployment successful "
 
