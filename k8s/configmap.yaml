@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ads-ingestion-config
+  namespace: default
+data:
+  KAFKA_BOOTSTRAP: "kafka.prod.svc.cluster.local:9092"
+  KAFKA_TOPIC: "ads-metrics-prod"
+  BATCH_SIZE: "500"
+  BATCH_TIMEOUT: "0.5"
+  QUEUE_MAXSIZE: "10000"
